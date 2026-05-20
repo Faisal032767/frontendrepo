@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>login</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: rgb(31, 31, 31);
+      }
+
+      #parent {
+        margin-top: 100px;
+        display: grid;
+        margin-left: 20px;
+        place-items: center;
+       
+        
+      }
+      ul {
+        /* background-color: red; */
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      #container {
+        padding: 30px;
+        background-color: rgb(12, 6, 35);
+        width: 480px;
+        border-radius: 8px;
+      }
+      ul li {
+        list-style: none;
+        position: relative;
+        width: inherit;
+      }
+      ul li input {
+        outline: none;
+        padding: 15px 8px;
+        width: inherit;
+        text-indent: 15px;
+        border: none;
+        border-radius: 4px;
+        font-size: .9em;
+        color: rgb(255, 255, 255,.9);
+        background-color: rgb(255, 255, 255,.3);
+      }
+
+      ul li label {
+        position: absolute;
+        top: 14px;
+        left: 20px;
+        transition: 0.3s;
+        pointer-events: none;
+        color: rgb(0, 0, 0, 0.6);
+        color: rgb(255, 255, 255,.5);
+      }
+
+      ul li input:focus + label,
+      ul li input:not(:placeholder-shown) + label {
+        top: -12px;
+        left: 1px;
+        background-color: rgb(12, 6, 35);
+        color: rgb(255, 255, 255,.7);
+        padding: 2px 8px;
+        border-radius: 50%;
+        font-size: 0.88em;
+      }
+
+      button {
+        width: inherit;
+        padding: 8px 4px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        background-color: rgb(32, 32, 199);
+        color: rgb(255, 255, 255,.8);
+        /* text-transform: uppercase; */
+        border-radius: 2px;
+        font-size: 1.1em;
+      }
+      button:hover {
+        background-color: blue;
+      }
+
+      ul li span {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        color: rgb(0, 0, 0, 0.6);
+        color: rgb(255, 255, 255,.8);
+        cursor: pointer;
+        padding: 14px;
+      }
+      h1{
+        color: white;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <div id="parent">
+        
+      <div id="container">
+        <ul>
+            <h1>Login</h1>
+          <li>
+            <input type="text" placeholder="" /> <label for="">Email-Id</label>
+          </li>
+          <li>
+            <input type="password" placeholder="" id="pass" />
+            <label for="">Password</label><span>Show</span>
+          </li>
+          <li><button>Submit</button></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    let pass = document.querySelector("ul li span");
+    let inpass = document.querySelector("#pass");
+    let intext = document.querySelector("ul li:first-of-type input");
+    console.log(intext);
+    let btn = document.querySelector("button");
+    pass.addEventListener("click", () => {
+      let value1 = inpass.value;
+      if (value1 !== "") {
+        // if (inpass.type === "password") {
+        //   inpass.type = "text";
+        //   pass.textContent = "Hide";
+        // } else {
+        //   inpass.type = "password";
+        //   pass.textContent = "Show";
+        // }
+
+        inpass.type === "password"? (inpass.type = "text",pass.textContent = "Hide" ): (inpass.type = "password",pass.textContent = "Show")
+        
+        console.log(inpass.type);
+      }
+    });
+
+    btn.addEventListener("click", () => {
+
+        let email=intext.value
+        let pass=inpass.value
+    //   if (email !== "" && pass !== "") {
+    //     intext.value = "";
+    //     inpass.value = "";
+    //     // email = "", pass = ""
+    //     alert("Submitted");
+    //   } else {
+    //     alert("fill the data");
+    //   }
+
+      email !== "" && pass !== "" ?( intext.value = "",inpass.value = "",alert("Submitted") ): alert("fill the data");
+    });
+  </script>
+</html>
